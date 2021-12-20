@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundspace</title>
+    <link rel="stylesheet" href="./user.css">
+    <script src="https://kit.fontawesome.com/51c0086ffa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="preloader">
+        <h1 class="preloader-text1">Hi</h1>
+        <h1 class="preloader-text2">This is Soundspace</h1>
+    </div>
+    <!-- NAV BAR -->
+    <nav>
+        <div class="exit-button">
+            <p id="exit-button" style="cursor: pointer;"><i class="fas fa-sign-out-alt fa-2x"></i></p>
+            <script>document.getElementById('exit-button').addEventListener("click", () => {
+                    window.location.href = "./login.html";
+                })
+            </script>
+        </div>
+        <ul class="nav-links">
+            <p><i class="fas fa-home fa-2x"></i></p>
+            <p><i class="fas fa-search fa-2x"></i></p>
+            <p><i class="fas fa-heart fa-2x"></i></p>
+            <p><i class="fas fa-camera fa-2x"></i></p>
+        </ul>
+        <div class="settings">
+            <p><i class="fas fa-cog fa-2x"></i></p>
+            <p><i class="fas fa-user-circle fa-2x"></i></p>
+        </div>
+    </nav>
+    
+    <!-- MAIN AREA -->
+    <h1 class="main-header">Home</h1>
+    <div class="main-area">
+        <div class="main-sections">
+            <p>Recently Played</p>
+            <div class="cards">
+                <div class="cards">
+                    <div class="card" style="background-image: url('./img/cas.jpg')">
+                        <!-- <h2>Arina Grande</h2> -->
+                    </div>
+                    <div class="card" style="background-image: url('./img/katy-perry.jpg')">
+                        <!-- <h2>Arina Grande</h2> -->
+                    </div>
+                    <div class="card" style="background-image: url('./img/dua-lipa.jpg')">
+                        <!-- <h2>Arina Grande</h2> -->
+                    </div>
+                    <div class="card" style="background-image: url('./img/one-republic.png')">
+                        <!-- <h2>Arina Grande</h2> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-sections">
+            <p>Favourite Artists</p>
+            <div class="cards">
+                <div class="card" style="background-image: url('./img/ariana.png')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/6lack.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/the-weeknd.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/joji.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+            </div>
+        </div>
+        <div class="main-sections">
+            <p>Favourite Albums</p>
+            <div class="cards">
+                <div class="card" style="background-image: url('./img/imagine-dragons.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/tame-impala.png')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/cas.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/dua-lipa.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+            </div>
+        </div>
+        <div class="main-sections">
+            <p>Fresh Albums</p>
+        </div>
+    </div>
+    <!-- NOW PLAYING -->
+    <div class="now-playing-section">
+
+        <h1>Now Playing</h1>    
+        <div class="song-image">
+        </div>
+
+        <div class="progess-bar">
+            <p>One Right Now - The Weeknd</p>
+        </div>
+
+        <div class="music-controls">
+            <i class="fas fa-random"></i>
+            <i class="fas fa-step-backward"></i>
+            <i class="fas fa-play"></i>
+            <i class="fas fa-step-forward"></i>
+            <i class="fas fa-redo"></i>
+        </div>
+
+        <p>Friends Activity</p>
+        <div class="friends-tab">
+            <div class="friend">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <div class="friend-info">
+                    <h3>Saleh</h3>
+                    <p>Listening to The Weeknd</p>
+                </div>
+                <div class="friend-chat">
+                    <button class="chat-button">Chat Now</button>
+                </div>
+            </div>
+            <div class="friend">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <div class="friend-info">
+                    <h3>Tanvir</h3>
+                    <p>Listening to Post Malone</p>
+                </div>
+                <div class="friend-chat">
+                    <button class="chat-button">Chat Now</button>
+                </div>
+            </div>
+            <div class="friend">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <div class="friend-info">
+                    <h3>Fathima</h3>
+                    <p>Listening to 6lack</p>
+                </div>
+                <div class="friend-chat">
+                    <button class="chat-button">Chat Now</button>
+                </div>
+            </div>
+            <div class="friend">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <div class="friend-info">
+                    <h3>Pragoon</h3>
+                    <p>Listening to NF</p>
+                </div>
+                <div class="friend-chat">
+                    <button class="chat-button">Chat Now</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
