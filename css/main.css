@@ -151,6 +151,20 @@ color: white;
 .d-block{
   height: 200px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.album-cover{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  align-items: center;
+
+}
+#album-cover{
+width: 15%;
+
 }
 .middle-bottom{
 margin-top: 30px;
