@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soundspace</title>
     <link rel="stylesheet" href="./user.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
     <script src="https://kit.fontawesome.com/51c0086ffa.js" crossorigin="anonymous"></script>
+    <script src="music-player.js"></script>
 </head>
 
 <body>
@@ -28,7 +33,7 @@
             <p><i class="fas fa-home fa-2x"></i></p>
             <p><i class="fas fa-search fa-2x"></i></p>
             <p><i class="fas fa-heart fa-2x"></i></p>
-            <p><i class="fas fa-camera fa-2x"></i></p>
+            <p><a href="../index.html"><i class="fas fa-camera fa-2x"></a></i></p>
         </ul>
         <div class="settings">
             <p><i class="fas fa-cog fa-2x"></i></p>
@@ -40,7 +45,8 @@
     <h1 class="main-header">Home</h1>
     <div class="main-area">
         <div class="main-sections">
-            <p>Recently Played</p>
+            <p>Recently Played</p><br>
+            <div id="scroll">
             <div class="cards">
                 <div class="cards">
                     <div class="card" style="background-image: url('./img/cas.jpg')">
@@ -55,11 +61,16 @@
                     <div class="card" style="background-image: url('./img/one-republic.png')">
                         <!-- <h2>Arina Grande</h2> -->
                     </div>
+                    <div class="card" style="background-image: url('./img/one-republic.png')">
+                        <!-- <h2>Arina Grande</h2> -->
+                    </div>
                 </div>
             </div>
         </div>
+        </div>
         <div class="main-sections">
-            <p>Favourite Artists</p>
+            <p>Favourite Artists</p><br>
+            <div id="scroll">
             <div class="cards">
                 <div class="card" style="background-image: url('./img/ariana.png')">
                     <!-- <h2>Arina Grande</h2> -->
@@ -73,10 +84,18 @@
                 <div class="card" style="background-image: url('./img/joji.jpg')">
                     <!-- <h2>Arina Grande</h2> -->
                 </div>
+                <div class="card" style="background-image: url('./img/joji.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/joji.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
             </div>
         </div>
+        </div>
         <div class="main-sections">
-            <p>Favourite Albums</p>
+            <p>Favourite Albums</p><br>
+            <div id="scroll">
             <div class="cards">
                 <div class="card" style="background-image: url('./img/imagine-dragons.jpg')">
                     <!-- <h2>Arina Grande</h2> -->
@@ -90,7 +109,14 @@
                 <div class="card" style="background-image: url('./img/dua-lipa.jpg')">
                     <!-- <h2>Arina Grande</h2> -->
                 </div>
+                <div class="card" style="background-image: url('./img/dua-lipa.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
+                <div class="card" style="background-image: url('./img/cas.jpg')">
+                    <!-- <h2>Arina Grande</h2> -->
+                </div>
             </div>
+        </div>
         </div>
         <div class="main-sections">
             <p>Fresh Albums</p>
@@ -106,12 +132,18 @@
         <div class="progess-bar">
             <p>One Right Now - The Weeknd</p>
         </div>
-
-        <div class="music-controls">
+        <audio src="./music/summer.mp3" id="audio"></audio>
+        <div class="music-container">
             <i class="fas fa-random"></i>
-            <i class="fas fa-step-backward"></i>
-            <i class="fas fa-play"></i>
-            <i class="fas fa-step-forward"></i>
+            <button id="prev" class="action-btn">
+                <i class="fas fa-backward"></i>
+              </button>
+              <button id="play" class="action-btn action-btn-big">
+                <i class="fas fa-play"></i>
+              </button>
+              <button id="next" class="action-btn">
+                <i class="fas fa-forward"></i>
+              </button>
             <i class="fas fa-redo"></i>
         </div>
 
