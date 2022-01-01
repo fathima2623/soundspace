@@ -174,12 +174,13 @@ nav p:hover{
     height: 210px;
     background-color: violet;
     border-radius: 10px;
-    background-size: contain;
+    background-size: cover;
     padding: 15px;
+    cursor: pointer;
 }
 
 .card:hover{
-    background-size: cover;
+    background-size: contain;
 }
 
 
