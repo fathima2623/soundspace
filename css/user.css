@@ -179,16 +179,24 @@ nav p:hover{
     min-height: 210px;
     background-color: violet;
     border-radius: 10px;
+<<<<<<< HEAD
+    background-size: cover;
+=======
     background-size: contain;
     align-items: center;
     justify-content: center;
+>>>>>>> fe9e41cf1dc7824e0535190be7d6a02ae548379b
     padding: 15px;
     cursor: pointer;
 }
 
 .card:hover{
+<<<<<<< HEAD
+    background-size: contain;
+=======
     background-size: cover;
     align-items: center;
+>>>>>>> fe9e41cf1dc7824e0535190be7d6a02ae548379b
 }
 
 
