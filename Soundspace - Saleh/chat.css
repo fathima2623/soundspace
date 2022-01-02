@@ -166,6 +166,7 @@ nav p:hover{
 .messages{
     height: 80%;
     width: 95%;
+    padding: 10px 10px;
     /* background-color: blanchedalmond; */
     border-radius: 30px;
     border: 1px solid blanchedalmond;

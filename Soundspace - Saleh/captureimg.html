@@ -24,8 +24,9 @@
  
  <div id="results" ></div>
  <!-- Script -->
- <script type="text/javascript" src="../webcamjs-master/webcam.min.js"></script>
-<script type="text/javascript" src="../script.js"></script>
+<script type="text/javascript" src="../webcamjs-master/webcam.min.js"></script>
+<script defer src="../face-api.min.js"></script>
+<!-- <script type="text/javascript" src="../script.js"></script> -->
  <!-- Code to handle taking the snapshot and displaying it locally -->
  <script language="JavaScript">
  
@@ -47,19 +48,6 @@
 //  shutter.autoplay = false;
 //  shutter.src = navigator.userAgent.match(/Firefox/) ? 'shutter.ogg' : 'shutter.mp3';
 
- function take_snapshot() {
-    // play sound effect
-   //  shutter.play();
-
-    // take snapshot and get image data
-    Webcam.snap( function(data_uri) {
-       // display results in page
-       document.getElementById('results').innerHTML = 
-           '<img id="imageprev" src="'+data_uri+'"/>';
-     } );
-
-     Webcam.reset();
- }
 
 // function saveSnap(){
 //    // Get base64 value from <img id='imageprev'> source
@@ -71,6 +59,104 @@
 //    });
 
 // }
+const img = document.getElementById('results')
+Promise.all([
+  faceapi.nets.tinyFaceDetector.loadFromUri('../models'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('../models'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('../models'),
+  faceapi.nets.faceExpressionNet.loadFromUri('../models')
+]).then(take_snapshot)
+
+// function startImg() {
+//   navigator.getUserMedia(
+//     { img: {} },
+//     stream => img.srcObject = stream,
+//     err => console.error(err)
+//   )
+// }
+
+// video.addEventListener('play', () => {
+//   const canvas = faceapi.createCanvasFromMedia(video)
+//   document.body.append(canvas)
+//   const displaySize = { width: video.width, height: video.height }
+//   faceapi.matchDimensions(canvas, displaySize)
+//   setInterval(async () => {
+//     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+//     const resizedDetections = faceapi.resizeResults(detections, displaySize)
+//     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+//     faceapi.draw.drawDetections(canvas, resizedDetections)
+//     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+//     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+//   }, 100)
+// })
+function take_snapshot() {
+    // play sound effect
+   //  shutter.play();
+
+    // take snapshot and get image data
+    Webcam.snap( function(data_uri) {
+       // display results in page
+       document.getElementById('results').innerHTML = 
+           '<img id="imageprev" src="'+data_uri+'"/>';
+           
+     } );
+     Webcam.reset();  
+ 
+
+//  img.addEventListener('change', async() => {
+   const input = document.getElementById('results')
+   const detectionWithExpressions = await faceapi.detectSingleFace(input).withFaceExpressions()
+   const displaySize = { width: input.width, height: input.height }
+// resize the overlay canvas to the input dimensions
+const canvas = document.getElementById('overlay')
+faceapi.matchDimensions(canvas, displaySize)
+/* Display detected face bounding boxes */
+const detections = await faceapi.detectAllFaces(input)
+// resize the detected boxes in case your displayed image has a different size than the original
+const resizedDetections = faceapi.resizeResults(detections, displaySize)
+// draw detections into the canvas
+faceapi.draw.drawDetections(canvas, resizedDetections)
+
+/* Display face landmarks */
+const detectionsWithLandmarks = await faceapi
+  .detectAllFaces(input)
+  .withFaceLandmarks()
+// resize the detected boxes and landmarks in case your displayed image has a different size than the original
+const resizedResults = faceapi.resizeResults(detectionsWithLandmarks, displaySize)
+// draw detections into the canvas
+faceapi.draw.drawDetections(canvas, resizedResults)
+// draw the landmarks into the canvas
+faceapi.draw.drawFaceLandmarks(canvas, resizedResults)
+
+
+
+
+//     input= await faceapi.bufferToImage(myFile.files(0));
+// //   const canvas = faceapi.createCanvasFromMedia(img)
+// //   document.body.append(canvas)
+// //   const displaySize = { width: img.width, height: img.height }
+// //   faceapi.matchDimensions(canvas, displaySize)
+//     const results = await faceapi.detectAllFaces(input, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+//     console.log(results)
+//     const facematcher= new faceapi.FaceMatcher(results);
+//    results.forEach(fd=> {
+//       const bestMatch = facematcher.findBestMatch(fd.descriptor)
+//       console.log(bestMatch);
+//    })
+//    can = faceapi.createCanvasFromMedia(input)
+//    con.append(can);
+//    faceapi.matchDimension(can,{width:input.width, height:input.height})
+//    const detectionsforSize = faceapi.resizeResults(results,{width:input.width, height:input.height})
+//    const box = results[0].detection.box;
+//    const faceBox = new faceapi.draw.DrawBox(box);
+//     faceapi.draw.drawDetections(can, detectionsforSize)
+//    //  faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+//     faceapi.draw.drawFaceExpressions(can, detectionsforSize)
+}
+
+// let fullFaceDescriptions = await faceapi.detectAllFaces(img).withFaceLandmarks().withFaceDescriptors().withFaceExpressions()
+// fullFaceDescriptions = faceapi.resizeResults(fullFaceDescriptions)
+// faceapi.draw.drawExpressions(canvas, fullFaceDescriptions)
 </script>
 </body>
 </html>
