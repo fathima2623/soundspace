@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soundspace</title>
+  <link rel="stylesheet" href="../css/user.css">
+  <script src="https://kit.fontawesome.com/51c0086ffa.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <audio class="song" id="myAudio"
+    src="https://firebasestorage.googleapis.com/v0/b/soundemic-4f707.appspot.com/o/KOBE_NEMESIS%2FAudio?alt=media&token=f26b0334-fedd-4787-a3ad-b14da2b42185"></audio>
+
+  <!-- PRELOADER -->
+  <div class="preloader">
+    <h1 class="preloader-text1">Hi</h1>
+    <h1 class="preloader-text2">This is Soundspace</h1>
+  </div>
+
+  <!-- MASTER CONTAINER -->
+  <div class="master-container">
+
+    <!-- NAV BAR -->
+    <nav>
+      <div class="exit-button">
+        <p id="exit-button"><i class="fas fa-sign-out-alt fa-2x"></i></p>
+      </div>
+      <ul class="nav-links">
+        <p><i class="fas fa-home fa-2x"></i></p>
+        <p><i class="fas fa-search fa-2x" id="div"></i></p>
+        <p id="camera-button"><i class="fas fa-camera fa-2x"></i></p>
+      </ul>
+      <div class="settings">
+        <p><i class="fas fa-user-circle fa-2x"></i></p>
+      </div>
+    </nav>
+
+    <!-- CAMERA MODAL -- invis -->
+    <div class="camera-modal" id="camera-modal">
+      <div class="modal-close-button" id="modal-close-button">+</div>
+      <div class="modal-container">
+        <!-- API goes here -->
+        <button>Capture</button>
+        <button>Search</button>
+      </div>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+      <div class="main-header">
+        <div class="header-text">Home</div>
+
+        <div class="search-with-notif">
+          <div class="search-bar">
+            <input type="text" id="text" placeholder="Search">
+            <input type="submit" id="submit">
+          </div>
+          <!-- NEW -->
+          <div class="icons">
+            <div class="notification">
+              <div class="notBtn" href="#">
+                <i class="fas fa-bell"></i>
+                <div class="box">
+                  <div class="display">
+                    <div class="nothing">
+                      <i class="fas fa-child stick"></i>
+                      <div class="cent">Looks Like your all caught up!</div>
+                    </div>
+                    <div class="cont">
+                      <!-- Fold this div and try deleting evrything inbetween -->
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-sections">
+        <p>Searched Songs</p>
+        <div class="search-result-cards">
+
+        </div>
+      </div>
+      <div class="main-sections">
+        <p>Fresh Songs</p>
+        <div class="fresh-album-cards"></div>
+      </div>
+      <div class="main-sections">
+        <p>Recently played</p>
+        <div class="recently-played-cards"></div>
+      </div>
+    </div>
+    <!-- main area ends here -->
+
+
+    <!-- NOW PLAYING -->
+    <div class="now-playing-section">
+      <h1>Now Playing</h1>
+      <div class="song-thumbnail"></div>
+
+      <div class="song-name">
+        <p>kobe</p>
+      </div>
+      <div class="artist-name">
+        <p>nemesis</p>
+      </div>
+      <div class="progress-bar">
+        <input type="range" class="interactive-progress" min="0" max="" value="0" onchange='const progressBar = document.querySelector(".interactive-progress");
+    document.getElementById("myAudio").currentTime = progressBar.value;' />
+      </div>
+
+      <div class="music-controls">
+        <i class="fas fa-random"></i>
+        <i class="fas fa-step-backward" id="previous"></i>
+        <i class="fa fa-play" id="play"> </i>
+        <i class="fas fa-step-forward" id="next"></i>
+        <i class="fas fa-redo" id="redo"></i>
+      </div>
+
+      <p>Friends Activity</p>
+      <div class="friends-tab">
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <!-- master container ends here -->
+
+
+  <script src=“firebase-messaging-sw.js”></script>
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase.js"></script>
+  <script type="module" src="../js/user.js"></script>
+
+</body>
+
+</html>
