@@ -34,7 +34,7 @@
       </div>
       <ul class="nav-links">
         <p><i class="fas fa-home fa-2x"></i></p>
-        <p><i class="fas fa-search fa-2x" id="div"></i></p>
+        <p id="search-navlink"><i class="fas fa-search fa-2x" id="div"></i></p>
         <p id="camera-button"><i class="fas fa-camera fa-2x"></i></p>
       </ul>
       <div class="settings">
@@ -66,8 +66,8 @@
         <div class="header-text">Home</div>
 
         <div class="search-with-notif">
-          <div class="search-bar">
-            <input type="text" id="text" placeholder="Search">
+          <div id="search-bar" class="search-bar">
+            <input type="text" id="text" placeholder="Search with Emoji">
             <input type="submit" id="submit">
           </div>
           <!-- NEW -->
@@ -93,21 +93,30 @@
         </div>
       </div>
 
-      <div class="main-sections">
-        <p>Searched Songs</p>
-        <div class="search-result-cards">
+      <div class="center-div">
+        <div class="main-section-wrapper">
+          <p>Searched Songs</p>
+          <div class="main-sections">
+            <div class="search-result-cards"></div>
+          </div>
+        </div>
 
+        <div class="main-section-wrapper">
+          <p>Fresh Songs</p>
+          <div class="main-sections">
+            <div class="fresh-album-cards"></div>
+          </div>
+        </div>
+  
+        <div class="main-section-wrapper">
+          <p>Recently played</p>
+          <div class="main-sections">
+            <div class="recently-played-cards"></div>
+          </div>
         </div>
       </div>
-      <div class="main-sections">
-        <p>Fresh Songs</p>
-        <div class="fresh-album-cards"></div>
-      </div>
-      <div class="main-sections">
-        <p>Recently played</p>
-        <div class="recently-played-cards"></div>
-      </div>
-    </div>
+      
+
     <!-- main area ends here -->
 
 

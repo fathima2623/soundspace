@@ -11,19 +11,23 @@
 body{
     background-color: #0c0c0c;
     overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+button{
+  background-color: #E41f7b;
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
+    height: 10px;
     background-color: transparent;
   }
   ::-webkit-scrollbar-track {
     background-color: transparent;
-    border-radius: 100vw;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: grey;
-    border-radius: 100vw;
+    background-color: #1b1b1b;
   }
 
   .chat-button{
@@ -106,11 +110,8 @@ body{
 /* NAV */
 nav{
     height: 100vh;
-    width: 8vw;
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    background-color: #0c0c0c;
+    width: 7vw;
+    background-color: #000000;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -146,8 +147,11 @@ nav p:hover{
 .main-area{
     height: 100vh;
     width: 70vw;
-    background-color: #0c0c0c;
-    overflow-y: scroll;
+    background-color: rgba(12, 12, 12, 0.7);
+}
+
+.main-area::-webkit-scrollbar {
+  display: none;
 }
 
 .main-header{
@@ -156,39 +160,63 @@ nav p:hover{
     margin-bottom: 20px;
 }
 
+.header-text{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 #text{
     border-radius: 100vw;
     height: 40px;
     width: 300px;
     color: black;
-    padding: 5px 30px;
+    padding: 5px 15px;
     outline: none;
     font-weight: 700;
 }
 
 #submit {
-    background-color: blue;
+    background-color: #E41f7b;
     border-radius: 100vw;
     padding: 5px 30px;
     border: none;
-    margin-left: 20px;
+    margin-left: 10px;
     height: 40px;
     cursor: pointer;
+    border: 2px solid transparent;
+}
+
+#submit:hover{
+  border: 2px solid white;
+}
+
+.center-div{
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.main-section-wrapper{
+    height: 50%;
+    background-color: black;
+    margin-bottom: 30px;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+.main-section-wrapper p{
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .main-sections{
-    height: 45%;
-    background-color: #0c0c0c;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    padding: 20px;
+    height: 100%;
     overflow-x: auto;
     overflow-y: hidden;
 }
 
 .fresh-album-cards{
     display: flex;
-    gap: 20px;
+    gap: 30px;
     width: 2000px;
     overflow-x: scroll;
     margin-top: 20px;
@@ -196,7 +224,7 @@ nav p:hover{
 
 .recently-played-cards{
     display: flex;
-    gap: 20px;
+    gap: 30px;
     width: 2000px;
     overflow-x: scroll;
     margin-top: 20px;
@@ -204,7 +232,7 @@ nav p:hover{
 
 .search-result-cards{
     display: flex;
-    gap: 20px;
+    gap: 30px;
     width: 2000px;
     overflow-x: scroll;
     margin-top: 20px;
@@ -216,8 +244,8 @@ nav p:hover{
 }
 
 .card{
-    width: 250px;
-    height: 210px;
+    width: 200px;
+    height: 200px;
     background-color: violet;
     border-radius: 10px;
     background-size: cover;
@@ -229,15 +257,25 @@ nav p:hover{
     opacity: 0.75;
 }
 
-/* RIGHT SIDE */
+/* NOW-PLAYING */
+
 .now-playing-section{
     background-color: black;
     height: 100vh;
-    width: 22vw;
+    width: 23vw;
     position: absolute;
     top: 0;
     right: 0;
-    padding: 20px;
+    padding: 30px;
+}
+
+.now-playing-section h1{
+  font-size: 2rem;
+}
+
+.now-playing-section p{
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .song-thumbnail{
@@ -246,25 +284,28 @@ nav p:hover{
     margin-top: 20px;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/soundemic-4f707.appspot.com/o/KOBE_NEMESIS%2FThumbnail?alt=media&token=c34ebabe-4bbd-4659-b4e4-ff22221376cb");
     background-size: cover;
+    border-radius: 10px;
 }
 
 .song-name{
     height: 30px;
-    background-color: #0c0c0c;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 3px;
+    font-size: 1.1rem;
+    font-weight: 800;
 }
 
 .artist-name{
     height: 30px;
-    background-color: #0c0c0c;
-    margin-top: 20px;
+    margin-top: 5px;
     padding: 3px;
+    font-weight: 300;
 }
 
 .progress-bar{
     height: 30px;
     background-color: #0c0c0c;
+    border-radius: 30px;
     margin-top: 20px;
     padding: 3px;
 }
@@ -294,8 +335,8 @@ nav p:hover{
 
 .music-controls{
     height: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -304,6 +345,7 @@ nav p:hover{
 
 .music-controls i:hover{
     cursor: pointer;
+
 }
 
 .friends-tab{
@@ -316,13 +358,28 @@ nav p:hover{
 
 .friend{
     background-color: black;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.friend h3{
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.friend .chat-button{
+  background-color: #E41f7b;
+  border-radius: 100vw;
+  width: 90px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: 400;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 a{
@@ -336,23 +393,18 @@ a{
   
   .box::-webkit-scrollbar-track
   {
-      
-      background-color: #F5F5F5;
-      border-radius: 5px
+    width: 10px;
   }
   
   .box::-webkit-scrollbar
   {
-      width: 10px;
-      background-color: #F5F5F5;
+    width: 10px;
     border-radius: 5px
   }
   
   .box::-webkit-scrollbar-thumb
   {
-      background-color: black;
-      border: 2px solid black;
-      border-radius: 5px
+      background-color: #1b1b1b;
   }
   
 
@@ -378,31 +430,33 @@ a{
   .box{
     width: 400px;
     height: 0px;
-    border-radius: 10px;
     transition: 0.5s;
     position: absolute;
     overflow-y: scroll;
-    padding: 0px;
+    padding: 20px;
     left: -300px;
     margin-top: 5px;
-    background-color:black;
+    background-color:#0c0c0c;
     -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
     box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
     cursor: context-menu;
+    z-index: 20;
+    visibility: hidden;
   }
   
   .fas:hover {
-    color: #d63031;
+    color: #E41f7b;
   }
   
   .notBtn:hover > .box{
-    height: 60vh
+    height: 60vh;
+    visibility: visible;
   }
   
   .content{
     padding: 20px;
-    color: black;
+    color: #0c0c0c;
     vertical-align: middle;
     text-align: left;
   }
@@ -586,7 +640,7 @@ canvas {
 }
 
 .main-area{
-    background-color: black;
+
     padding: 30px;
 }
 
@@ -598,4 +652,13 @@ canvas {
 .song-name, .artist-name{
     text-align: center;
     text-transform: capitalize;
+}
+
+/* SEARCH BAR CLASSES */
+.search-bar{
+  visibility: hidden;
+}
+
+.search-bar.active{
+  visibility: visible;
 }
