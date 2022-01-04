@@ -42,9 +42,21 @@ login.addEventListener("click", (e) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
+      
 
       alert("User logged in!");
+
+      const user = auth.currentUser;
+      onAuthStateChanged(auth, (user) => {
+      if (user) {
+    // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+       window.location = "../pages/user.html"; //After successful login, user will be redirected to dashboard page
+        }
+  //  else {
+  //   alert('USER NOT SIGNED IN');
+  // }
+});
 
       const dt = new Date();
       update(ref(database, "users/" + user.uid), {
@@ -61,14 +73,5 @@ login.addEventListener("click", (e) => {
     });
 });
 
-const user = auth.currentUser;
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    window.location = "../pages/user.html"; //After successful login, user will be redirected to dashboard page
-  }
-  //  else {
-  //   alert('USER NOT SIGNED IN');
-  // }
-});
+
+
