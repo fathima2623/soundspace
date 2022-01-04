@@ -370,3 +370,10 @@ document.getElementById("camera-button").addEventListener("click", function(){
     document.getElementById("camera-modal").classList.toggle("active");
 })
 
+// SEARCH BAR APPEAR AND DISAPPEAR ON NAV-LINK CLICK
+document.getElementById("search-navlink").addEventListener("click", function(){
+  document.getElementById("search-bar").classList.toggle("active");
+})
+
+
+
