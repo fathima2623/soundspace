@@ -508,15 +508,33 @@ a{
 
 .modal-container{
     height: 80vh;
-    width: 40vw;
+    width: 85vw;
     background-color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    flex-direction: column;
     gap: 20px;
     padding: 30px;
 }
+.picture-container{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.picture-container div{
+  width: 640px;
+  height: 480px;
+  border: 1px solid black;
+}
 
+.button-container{
+  display: flex;
+  width: 90%;
+  justify-content: flex-end;
+  gap: 10px;
+
+}
 .modal-container button{
     padding: 10px 40px;
     background-color: black;
@@ -539,6 +557,7 @@ a{
     font-weight: 300;
     cursor: pointer;
 }
+
 
 /* MAIN HEADER */
 .search-with-notif{
