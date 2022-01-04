@@ -30,7 +30,7 @@ const auth = getAuth();
 const database = getDatabase();
 const storage = getStorage();
 
-
+window.myname = "";
 onAuthStateChanged(auth, (user) => {
   if (user) {
     window.userid = user.uid;
@@ -418,6 +418,30 @@ document.getElementById("search").addEventListener("click",function() {
     faceapi.draw.drawDetections(canvas, resizedDimensions);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDimensions);
     faceapi.draw.drawFaceExpressions(canvas, resizedDimensions);
+
+    var facemood = emotion[0];
+    
+    for (var l = 1; l <= mood.length; l++) {
+
+      if (mood[l] == facemood) {
+
+        //console.log(songname[t]);
+
+        let card = document.createElement("div");
+
+
+        card.className = 'card';
+        card.setAttribute("onclick", "playsong(" + l + ")");
+        card.setAttribute("id", "" + l + "");
+        card.style.backgroundImage = "url('" + imgsources[l] + "')";
+        document.querySelector(".search-result-cards").appendChild(card);
+
+      }
+
+      else
+        continue;
+    }
+    
 
     //document.getElementById('results').innerHTML = 
        // '<img id="imageprev" src="'+canvas+'"/>';
