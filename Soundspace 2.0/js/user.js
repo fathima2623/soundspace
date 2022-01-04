@@ -5,9 +5,10 @@ import { getDatabase, ref, set, push, child, onChildAdded, onValue, update } fro
 // import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getStorage, ref as sRef, uploadBytes, uploadBytesResumable, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 import { getAuth, createUserWithEmailAndPassword, signOut, onAuthStateChanged, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import * as firebase from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+//import * as firebase from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, setDoc, updateDoc, doc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
-import { getMessaging, getToken, onMessage } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js';
+
+//import { getMessaging, getToken, onMessage } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,14 +29,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getDatabase();
 const storage = getStorage();
-//const messaging = app.messaging();
 
-
-//const messaging   =        app.getMessaging();
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // https://firebase.google.com/docs/reference/js/firebase.User
     window.userid = user.uid;
     console.log(userid);
     window.myname = user.username
@@ -179,17 +176,7 @@ document.getElementById("submit").addEventListener(('click'), (e) => {
 
 
 
-        const messaging = getMessaging();
-        messaging
-          .requestPermission()
-          .then(function () {
-            MsgElem.innerHTML = "Notification permission granted."
-            console.log("Notification permission granted.");
-          })
-          .catch(function (err) {
-            ErrElem.innerHTML = ErrElem.innerHTML + "; " + err
-            console.log("Unable to get permission to notify.", err);
-          });
+        
       }
 
       else
@@ -368,5 +355,79 @@ document.getElementById("modal-close-button").addEventListener("click", function
 
 document.getElementById("camera-button").addEventListener("click", function(){
     document.getElementById("camera-modal").classList.toggle("active");
+
+   Webcam.set({
+         
+         image_format: 'jpeg',
+         jpeg_quality: 90
+      });
+      Webcam.attach( '#my_camera' );
+   
+    }) 
+
+
+
+document.getElementById("snapshot").addEventListener("click", function(){
+  
+Webcam.snap( function(data_uri) {
+    // display results in page
+    document.getElementById('results').innerHTML = 
+        '<img id="imageprev" src="'+data_uri+'"/>';
+   //document.querySelector(".cam").src = data_uri;
+        //console.log(data_uri)
+      window.data = data_uri
+  } );
+
+  Webcam.reset();
+   
 })
 
+document.getElementById("search").addEventListener("click",function() {
+
+  //var base64image = document.getElementById("imageprev").src;
+      
+      (async () => {
+    await faceapi.nets.ssdMobilenetv1.loadFromUri('./models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('./models');
+    await faceapi.nets.faceExpressionNet.loadFromUri('./models');
+    
+    const image = document.querySelector('img')
+    const canvas = faceapi.createCanvasFromMedia(image);
+    const detection = await faceapi.detectSingleFace(image)
+                                    .withFaceLandmarks()
+                                    .withFaceExpressions();
+
+    const dimensions = {
+        width: image.width,
+        height: image.height
+    };
+    
+    console.log(detection);
+    const resizedDimensions = faceapi.resizeResults(detection, dimensions);
+
+    //document.body.append(canvas);
+    document.getElementById('results').append(canvas);
+    const expressions = resizedDimensions.expressions;
+    console.log(expressions);
+    const maxValue = Math.max(...Object.values(expressions));
+      const emotion = Object.keys(expressions).filter(
+        item => expressions[item] === maxValue
+      );
+
+      console.log(emotion[0]);
+    faceapi.draw.drawDetections(canvas, resizedDimensions);
+    faceapi.draw.drawFaceLandmarks(canvas, resizedDimensions);
+    faceapi.draw.drawFaceExpressions(canvas, resizedDimensions);
+
+    //document.getElementById('results').innerHTML = 
+       // '<img id="imageprev" src="'+canvas+'"/>';
+
+       // document.getElementById("myImage").src = 'img/new-image.jpg';
+})();
+
+
+  
+})
+
+
+   
