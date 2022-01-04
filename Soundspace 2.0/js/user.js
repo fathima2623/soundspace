@@ -382,7 +382,6 @@ Webcam.snap( function(data_uri) {
    
 })
 
-<<<<<<< HEAD
 // SEARCH BAR APPEAR AND DISAPPEAR ON NAV-LINK CLICK
 document.getElementById("search-navlink").addEventListener("click", function(){
   document.getElementById("search-bar").classList.toggle("active");
@@ -390,7 +389,6 @@ document.getElementById("search-navlink").addEventListener("click", function(){
 
 
 
-=======
 document.getElementById("search").addEventListener("click",function() {
 
   //var base64image = document.getElementById("imageprev").src;
@@ -464,4 +462,3 @@ document.getElementById("search").addEventListener("click",function() {
 
 
    
->>>>>>> 402c2bd5487f1465c1ce7e9b57d03b7fec7095f0
