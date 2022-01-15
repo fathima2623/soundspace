@@ -30,13 +30,21 @@ const auth = getAuth();
 const database = getDatabase();
 const storage = getStorage();
 
-window.myname = "";
+window.myname="";
 onAuthStateChanged(auth, (user) => {
   if (user) {
     window.userid = user.uid;
     console.log(userid);
-    window.myname = user.username
-    console.log(myname);
+    return onValue(ref(database, 'users/' + userid), (snapshot) => {
+      var data = snapshot.val();
+      myname = data.username;
+      console.log("my name is "+myname);
+
+    })
+
+    //const dataname = user.uid.val()
+    //console.log(dataname.username);
+    //window.myname = dataname.username;
   }
   else {
     alert('USER NOT SIGNED IN')
@@ -173,7 +181,7 @@ document.getElementById("submit").addEventListener(('click'), (e) => {
         card.style.backgroundImage = "url('" + imgsources[t] + "')";
         document.querySelector(".search-result-cards").appendChild(card);
 
-
+        sad(myname);
 
 
         
