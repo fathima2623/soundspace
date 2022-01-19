@@ -39,9 +39,15 @@ onAuthStateChanged(auth, (user) => {
       var data = snapshot.val();
       myname = data.username;
       console.log("my name is "+myname);
+<<<<<<< HEAD
     
     })
     
+=======
+
+    })
+
+>>>>>>> f7496a006a3c5dee5a394e6c493954e4e762bc25
     //const dataname = user.uid.val()
     //console.log(dataname.username);
     //window.myname = dataname.username;
@@ -183,8 +189,13 @@ document.getElementById("submit").addEventListener(('click'), (e) => {
         card.style.backgroundImage = "url('" + imgsources[t] + "')";
         document.querySelector(".search-result-cards").appendChild(card);
 
+<<<<<<< HEAD
 
        sad(myname);
+=======
+        sad(myname);
+
+>>>>>>> f7496a006a3c5dee5a394e6c493954e4e762bc25
 
         
       }

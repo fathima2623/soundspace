@@ -605,7 +605,7 @@ a{
 .cam-div{
   width: 640px; 
   height: 480px;
-  background: url("../img/Wave\ \(1\).svg");
+  /* background: url("../img/Wave\ \(1\).svg"); */
   border: 1px solid grey;
 
 }
@@ -623,8 +623,13 @@ a{
 
 canvas {
   position: absolute;
+<<<<<<< HEAD
   top: 103px;
   left: 112px;
+=======
+  top: 140px;
+  left: 200px;
+>>>>>>> f7496a006a3c5dee5a394e6c493954e4e762bc25
 }
 
 
