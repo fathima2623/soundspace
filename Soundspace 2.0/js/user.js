@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 //import { getMessaging } from "https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js";
-import { getDatabase, ref, set, push, child, onChildAdded, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import { getDatabase, ref, set, push, child, onChildAdded, onValue, update,get } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 // import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 import { getStorage, ref as sRef, uploadBytes, uploadBytesResumable, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 import { getAuth, createUserWithEmailAndPassword, signOut, onAuthStateChanged, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
@@ -30,18 +30,28 @@ const auth = getAuth();
 const database = getDatabase();
 const storage = getStorage();
 
-window.myname = "";
+window.myname="";
 onAuthStateChanged(auth, (user) => {
   if (user) {
     window.userid = user.uid;
     console.log(userid);
-    window.myname = user.username
-    console.log(myname);
+    return onValue(ref(database, 'users/' + userid), (snapshot) => {
+      var data = snapshot.val();
+      myname = data.username;
+      console.log("my name is "+myname);
+    
+    })
+    
+    //const dataname = user.uid.val()
+    //console.log(dataname.username);
+    //window.myname = dataname.username;
   }
   else {
     alert('USER NOT SIGNED IN')
   }
 });
+
+
 
 //code for fresh albums starts here
 const dbRef = ref(database, 'MusicFileNames/');
@@ -174,7 +184,7 @@ document.getElementById("submit").addEventListener(('click'), (e) => {
         document.querySelector(".search-result-cards").appendChild(card);
 
 
-
+       sad(myname);
 
         
       }

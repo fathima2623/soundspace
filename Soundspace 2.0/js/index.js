@@ -32,21 +32,31 @@ const database = getDatabase(app);
 const auth = getAuth();
 
 // function myFunction() {
-  signUp.addEventListener("click", (e) => {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var username = document.getElementById("username").value;
+  signUp.addEventListener('click', (e) => {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var username = document.getElementById('username').value;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        set(ref(database, "users/" + user.uid), {
+        set(ref(database, 'users/' + user.uid), {
           username: username,
           email: email,
         });
 
-        alert("User Created");
+        //const user = auth.currentUser;
+        alert('User Created');
+
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+         // https://firebase.google.com/docs/reference/js/firebase.User
+         const uid = user.uid;
+         window.location = "/Soundspace 2.0/pages/user.html"; //After successful login, user will be redirected to dashboard page
+       } else {
+         alert("USER NOT SIGNED IN");
+       }
         // ...
       })
       .catch((error) => {
@@ -55,15 +65,7 @@ const auth = getAuth();
         // ..
       });
 
-      const user = auth.currentUser;
-      onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        window.location = '../pages/user.html'; //After successful login, user will be redirected to dashboard page
-      } else {
-        alert("USER NOT SIGNED IN");
-      }
+      
     });
   });
 

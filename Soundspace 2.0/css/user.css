@@ -217,7 +217,7 @@ nav p:hover{
 .fresh-album-cards{
     display: flex;
     gap: 30px;
-    width: 2000px;
+    width: 3000px;
     overflow-x: scroll;
     margin-top: 20px;
 }
@@ -225,7 +225,7 @@ nav p:hover{
 .recently-played-cards{
     display: flex;
     gap: 30px;
-    width: 2000px;
+    width: 3000px;
     overflow-x: scroll;
     margin-top: 20px;
 }
@@ -623,8 +623,8 @@ a{
 
 canvas {
   position: absolute;
-  top: 200px;
-  left: 200px;
+  top: 103px;
+  left: 112px;
 }
 
 
